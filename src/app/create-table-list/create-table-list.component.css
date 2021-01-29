@@ -1,0 +1,11 @@
+.table-list {
+    display: flex;
+    justify-content: space-between;
+}
+select {
+    border: none;
+    margin-left: 10px;
+}
+button{
+    margin-top: 20px;
+}

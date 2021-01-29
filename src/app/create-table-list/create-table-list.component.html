@@ -1,0 +1,83 @@
+<div>
+    <h3>Choose what to add:</h3>
+    <form>
+        <div class="form-check">
+            <label class="form-check-label" for="flexRadio1">
+            <input  checked (change) = "showCode = 1" class="form-check-input" type="radio" name="flexRadioDefault"  id="flexRadio1" >Table</label>
+          </div>
+          <div class="form-check"> 
+            <label class="form-check-label" for="flexRadio2">
+            <input (change) = "showCode = 2" class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadio2" >List</label>
+          </div>
+    </form>
+
+    <div  *ngIf = "showCode === 1">
+        <form #form onsubmit='return false'>
+            <h4 class="form-header">Add style to your table : </h4>
+            <div class="mb-3">
+                <label for="count-tr" class="form-label">Count TR: </label>
+                <input [(ngModel)] = "table['count-tr']" type="text" name="count-r" class="form-control" id="count-tr">
+            </div>
+            <div class="mb-3">
+                <label for="count-td" class="form-label">Count TD: </label>
+                <input [(ngModel)] = "table['count-td']" name="count-td" type="text" class="form-control" id="count-td">
+            </div>
+            <div class="mb-3">
+                <label for="width-td" class="form-label">Width TD: </label>
+                <input [(ngModel)] = "table['width-td']" name="width-td" type="text" class="form-control" id="width-td">
+            </div>
+            <div class="mb-3">
+                <label for="height-td" class="form-label">Height TD: </label>
+                <input [(ngModel)] = "table['height-td']" name="height-td" type="text" class="form-control" id="height-td">
+            </div>
+            
+            <div class="table-list">
+                <div>
+                    <label for="width-border" class="form-label">Width of border : </label>
+                    <input [(ngModel)] = "table['border-width']" name="border-width" type="text" class="form-control" id="width-border">
+                </div>
+                <div>
+                    <label class="form-label" for="border-type">Type of border : </label>
+                    <select [(ngModel)] = "table['border-type']"  class='select' name="type" id="border-type">
+                        <option value="solid">solid</option>
+                        <option value="dotted">dotted</option>
+                        <option value="dashed">dashed</option>
+                        <option value="double">double</option>
+                </select>
+                </div>
+                <div>
+                    <label class="form-label" for="border-color">Border colors : </label>
+                    <select [(ngModel)] = "table['border-color']" name="table-color" class="select" id="border-color">
+                        <option value="#3b3b3b">black</option>
+                        <option value="#ff7c7c">red</option>
+                        <option value="#fff">white</option>
+                        <option value="#ffff98">yellow</option>
+                        <option value="#b1bcfa">blue</option>
+                        <option value="#ff882c">orange</option>
+                        <option value="#a6fa92">green</option>
+                </select> 
+                </div>
+            </div>
+            <button class="btn btn-outline-success" (click) = "createTable()">Create table</button>    
+        </form>
+    </div>
+    <div *ngIf = "showCode === 2" class="list" id="list">
+        <h4 class="form-header">Add style to your list : </h4>
+        <form onsubmit='return false'>
+            <div class="mb-3">
+                <label for="count-li" class="form-label">Count li : </label>
+                <input name="count-li" [(ngModel)] = "list['count-li']" class="form-control" type="text" id='count-li'>
+            </div>
+            <div class="mb-3">
+            <label class="form-label" for="mark-type">Mark type :</label>
+                <select name='mark-type' [(ngModel)] = "list['mark-type']" class='select' id="mark-type">
+                    <option value="circle">circle</option>
+                    <option value="disc">disc</option>
+                    <option value="square">square</option>
+                    <option value="none">none</option>
+                </select> 
+            </div>
+                <button (click) = "createList()" class="btn btn-outline-success" id='btn-list'>Create list</button>
+        </form>
+    </div>
+</div>
